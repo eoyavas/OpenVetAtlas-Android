@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use OpenVetAtlas Android in your research, education, or academic work, please cite it using the metadata below."
+type: software
+title: "OpenVetAtlas Android (oVa): Open-Source 3D Veterinary Anatomy and Osteology Platform for Android"
+abstract: "OpenVetAtlas Android (oVa) is an open-source mobile 3D anatomy and osteology platform developed for Android phones and tablets using Godot Engine 4 (GL Compatibility) to support three-dimensional learning in veterinary medical education, utilizing 3D digital twins scanned at DijiLab."
+authors:
+  - given-names: "Eren Özgürcan"
+    family-names: "Yavaş"
+    email: "eoyavas@gmail.com"
+    affiliation: "Aydın Adnan Menderes Üniversitesi, Veteriner Fakültesi, Veterinerlik Anatomisi Anabilim Dalı"
+    orcid: "https://orcid.org/0000-0003-0162-8150"
+  - given-names: "Fatih"
+    family-names: "Gürler"
+    affiliation: "Aydın Adnan Menderes Üniversitesi, Veteriner Fakültesi, Veterinerlik Anatomisi Anabilim Dalı"
+repository-code: "https://github.com/eoyavas/OpenVetAtlas-Android"
+url: "https://github.com/eoyavas/OpenVetAtlas-Android"
+license: AGPL-3.0
+version: "0.4.0-beta"
+date-released: "2026-11-10"
+keywords:
+  - "veterinary anatomy"
+  - "osteology"
+  - "android"
+  - "godot engine"
+  - "3d digital twins"
+  - "veterinary education"
+  - "nomina anatomica veterinaria"

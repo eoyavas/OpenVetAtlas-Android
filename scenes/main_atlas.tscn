@@ -1,0 +1,269 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8m7v4atlas01"]
+
+[ext_resource type="Script" path="res://src/ui/atlas_main_controller.gd" id="1_ctrl"]
+[ext_resource type="Script" path="res://src/camera/touch_orbit_camera.gd" id="2_cam"]
+[ext_resource type="Script" path="res://src/landmarks/landmark_spawner.gd" id="3_spawner"]
+[ext_resource type="Texture2D" path="res://Assets/branding/ova_header_logo.png" id="4_logo"]
+
+[sub_resource type="Environment" id="Environment_atlas"]
+background_mode = 1
+background_color = Color(0.08, 0.1, 0.13, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.95, 0.95, 0.95, 1)
+
+[node name="MainAtlas" type="Node3D"]
+script = ExtResource("1_ctrl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_atlas")
+
+[node name="SpecimenHolder" type="Node3D" parent="."]
+
+[node name="TouchOrbitCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.882948, -0.113786, 0.455469, 0, 0.970296, 0.241922, -0.469472, -0.213604, 0.85672, 1.00203, 0.532228, 1.88478)
+current = true
+fov = 45.0
+script = ExtResource("2_cam")
+
+[node name="LandmarkSpawner" type="Node" parent="."]
+script = ExtResource("3_spawner")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="SafeAreaRoot" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 12.0
+offset_right = -14.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopBar" type="PanelContainer" parent="UILayer/SafeAreaRoot"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+
+[node name="TopBarMargin" type="MarginContainer" parent="UILayer/SafeAreaRoot/TopBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="TopBarGrid" type="GridContainer" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="NavRow" type="HBoxContainer" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="BrandLogo" type="TextureRect" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid/NavRow"]
+custom_minimum_size = Vector2(52, 30)
+layout_mode = 2
+texture = ExtResource("4_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NavDivider" type="VSeparator" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid/NavRow"]
+layout_mode = 2
+
+[node name="TaxonSelector" type="OptionButton" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid/NavRow"]
+custom_minimum_size = Vector2(68, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 14
+clip_text = true
+fit_to_longest_item = false
+
+[node name="BreadcrumbChevron" type="Label" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid/NavRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.64, 0.76, 1)
+theme_override_font_sizes/font_size = 15
+text = "›"
+vertical_alignment = 1
+
+[node name="BoneSelector" type="OptionButton" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid/NavRow"]
+custom_minimum_size = Vector2(74, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 14
+clip_text = true
+fit_to_longest_item = false
+
+[node name="ToolRow" type="HBoxContainer" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="PinsToggleButton" type="Button" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid/ToolRow"]
+custom_minimum_size = Vector2(58, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 13
+text = "● Pins"
+clip_text = true
+
+[node name="QuizModeButton" type="Button" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid/ToolRow"]
+custom_minimum_size = Vector2(54, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 13
+text = "Quiz"
+clip_text = true
+
+[node name="QualitySelector" type="OptionButton" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid/ToolRow"]
+custom_minimum_size = Vector2(56, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 13
+clip_text = true
+fit_to_longest_item = false
+
+[node name="ResetCamButton" type="Button" parent="UILayer/SafeAreaRoot/TopBar/TopBarMargin/TopBarGrid/ToolRow"]
+custom_minimum_size = Vector2(38, 34)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 15
+text = "⟲"
+
+[node name="InfoDrawer" type="PanelContainer" parent="UILayer/SafeAreaRoot"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -310.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="DrawerMargin" type="MarginContainer" parent="UILayer/SafeAreaRoot/InfoDrawer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="DrawerVBox" type="VBoxContainer" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderHBox" type="HBoxContainer" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SelectedLatinLabel" type="Label" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.82, 0.42, 1)
+theme_override_font_sizes/font_size = 16
+text = "Caput humeri"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ToggleSheetButton" type="Button" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/HeaderHBox"]
+custom_minimum_size = Vector2(38, 34)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 14
+text = "▼"
+
+[node name="DrawerBodyVBox" type="VBoxContainer" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="HSeparator" type="HSeparator" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox"]
+layout_mode = 2
+
+[node name="QuizBox" type="VBoxContainer" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="QuizFeedbackCard" type="PanelContainer" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox/QuizBox"]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardMargin" type="MarginContainer" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox/QuizBox/QuizFeedbackCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="CardHBox" type="HBoxContainer" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox/QuizBox/QuizFeedbackCard/CardMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="FeedbackSymbolLabel" type="Label" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox/QuizBox/QuizFeedbackCard/CardMargin/CardHBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "◎"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FeedbackLatinLabel" type="Label" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox/QuizBox/QuizFeedbackCard/CardMargin/CardHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Caput humeri"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="QuizActionsHBox" type="HBoxContainer" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox/QuizBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="QuizRestartButton" type="Button" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox/QuizBox/QuizActionsHBox"]
+custom_minimum_size = Vector2(50, 38)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 17
+text = "↻"
+
+[node name="QuizNextButton" type="Button" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox/QuizBox/QuizActionsHBox"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 17
+text = "→"
+
+[node name="QuizExitButton" type="Button" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox/QuizBox/QuizActionsHBox"]
+custom_minimum_size = Vector2(50, 38)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 17
+text = "×"
+
+[node name="LandmarkScroll" type="ScrollContainer" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LandmarkListVBox" type="VBoxContainer" parent="UILayer/SafeAreaRoot/InfoDrawer/DrawerMargin/DrawerVBox/DrawerBodyVBox/LandmarkScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4

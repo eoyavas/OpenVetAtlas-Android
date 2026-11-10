@@ -1,0 +1,24 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Temporary validation reports, dumps, and scratch files
+.tmp/
+
+# Local Godot Engine binaries, archives & Android APK builds
+Godot_v*.exe
+*.apk
+*.aab
+*.keystore
+*.rar
+*.zip
+
+# Android / Gradle build artifacts
+android/build/
+android/.gradle/
+
+# OS, Editor & leftover Unity meta files
+.DS_Store
+Thumbs.db
+*.tmp
+*~
+*.meta

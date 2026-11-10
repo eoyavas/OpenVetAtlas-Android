@@ -1,0 +1,47 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="OpenVetAtlas"
+config/description="Open-source 3D Veterinary Anatomy Atlas for Android phones and tablets"
+config/version="0.4.0"
+run/main_scene="res://scenes/main_atlas.tscn"
+run/low_processor_usage_mode=true
+run/low_processor_usage_mode_sleep_usec=6900
+config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.145098, 0.160784, 0.184314, 1)
+boot_splash/image="res://Assets/branding/ova_splash.png"
+boot_splash/fullsize=false
+config/icon="res://Assets/branding/icon_192.png"
+
+[autoload]
+
+QualityManager="*res://src/core/quality_manager.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=6
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/android/enable_pan_and_scale_gestures=false
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+anti_aliasing/quality/msaa_3d=0
